@@ -43,4 +43,49 @@ public class StudentTest {
         PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
         Assert.assertEquals(41411978, pgs.getID());
     }
+    
+    @Test
+    public void testGetName() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        Assert.assertEquals("Rubens", pgs.getName());
+    }
+    @Test
+    public void testSetName() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        pgs.setName("Lucas");
+        Assert.assertEquals("Lucas", pgs.getName());
+    }
+    @Test
+    public void testGetAddress() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        Assert.assertEquals("Mairiporã", pgs.getAddress());
+    }
+    @Test
+    public void testSetAddress() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        pgs.setAddress("Mauá");
+        Assert.assertEquals("Mauá", pgs.getAddress());
+    }
+    @Test
+    public void testGetPhone() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        Assert.assertEquals("(11) 97275-5022", pgs.getPhone());
+    }
+    @Test
+    public void testSetPhone() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        pgs.setPhone("(12) 97275-5022");
+        Assert.assertEquals("(12) 97275-5022", pgs.getPhone());
+    }
+    @Test
+    public void testGetEmail() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        Assert.assertEquals("rubens@email.com", pgs.getEmail());
+    }
+    @Test
+    public void testSetEmail() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        pgs.setEmail("lucas@email.com");
+        Assert.assertEquals("lucas@email.com", pgs.getEmail());
+    }
 }

@@ -34,6 +34,13 @@ public class UnderGraduateStudentTest {
         UnderGraduateStudent ugs = new UnderGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Bacharel", "Tecnólogo");
         Assert.assertEquals("Bacharel", ugs.getMajor());
     }
+    
+    @Test
+    public void testSetMajor() {
+        UnderGraduateStudent ugs = new UnderGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Bacharel", "Tecnólogo");
+        ugs.setMajor("Bacharel I");
+        Assert.assertEquals("Bacharel I", ugs.getMajor());
+    }
 
     /**
      * Test of getMinor method, of class UnderGraduateStudent.
@@ -42,6 +49,13 @@ public class UnderGraduateStudentTest {
     public void testGetMinor() {
         UnderGraduateStudent ugs = new UnderGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Bacharel", "Tecnólogo");
         Assert.assertEquals("Tecnólogo", ugs.getMinor());
+    }
+    
+    @Test
+    public void testSetMinor() {
+        UnderGraduateStudent ugs = new UnderGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Bacharel", "Tecnólogo");
+        ugs.setMinor("Tecnológo I");
+        Assert.assertEquals("Tecnológo I", ugs.getMinor());
     }
 
     /**

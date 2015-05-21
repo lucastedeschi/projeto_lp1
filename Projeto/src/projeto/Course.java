@@ -46,4 +46,22 @@ public class Course {
     public String getCode(){
         return this.code;
     }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public int getNumCredits() {
+        return numCredits;
+    }
+    public void setNumCredits(int numCredits) {
+        this.numCredits = numCredits;
+    }
+    public int getMaxStudents() {
+        return maxStudents;
+    }
+    public void setMaxStudents(int maxStudents) {
+        this.maxStudents = maxStudents;
+    }
 }

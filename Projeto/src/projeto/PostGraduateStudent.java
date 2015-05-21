@@ -23,8 +23,14 @@ public class PostGraduateStudent
     public String getThesisTitle(){
         return this.thesisTitle;
     }
-    public String getTSupervisor(){
+    public void setThesisTitle(String thesisTitle) {
+        this.thesisTitle = thesisTitle;
+    }
+    public String getSupervisor(){
         return this.supervisor;
+    }
+    public void setSupervisor(String supervisor) {
+        this.supervisor = supervisor;
     }
     @Override
     public String toString(){

@@ -23,7 +23,7 @@ public class PostGraduateStudentTest {
         Assert.assertEquals("(11) 97275-5022", pgs.phone);
         Assert.assertEquals("rubens@email.com", pgs.email);
         Assert.assertEquals("Título da Tese", pgs.getThesisTitle());
-        Assert.assertEquals("Ana Cristina", pgs.getTSupervisor());
+        Assert.assertEquals("Ana Cristina", pgs.getSupervisor());
     }
 
     /**
@@ -34,14 +34,28 @@ public class PostGraduateStudentTest {
         PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
         Assert.assertEquals("Título da Tese", pgs.getThesisTitle());
     }
+    
+    @Test
+    public void testSetThesisTitle() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        pgs.setThesisTitle("Título da tese alterado");
+        Assert.assertEquals("Título da tese alterado", pgs.getThesisTitle());
+    }
 
     /**
      * Test of getTSupervisor method, of class PostGraduateStudent.
      */
     @Test
-    public void testGetTSupervisor() {
+    public void testGetSupervisor() {
         PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
-        Assert.assertEquals("Ana Cristina", pgs.getTSupervisor());
+        Assert.assertEquals("Ana Cristina", pgs.getSupervisor());
+    }
+    
+    @Test
+    public void testSetSupervisor() {
+        PostGraduateStudent pgs = new PostGraduateStudent(41411978, "Rubens", "Mairiporã", "(11) 97275-5022", "rubens@email.com", "Título da Tese", "Ana Cristina");
+        pgs.setSupervisor("Ana Cristina 2");
+        Assert.assertEquals("Ana Cristina 2", pgs.getSupervisor());
     }
 
     /**

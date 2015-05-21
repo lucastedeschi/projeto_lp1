@@ -28,32 +28,42 @@ public class University {
         courses.add(c);
         return c;
     }
-    public boolean updateCourse(String code, String title, int numCredits, int maxStudents){
-        Course c = new Course(code, title, numCredits, maxStudents);
-        for (Course cs : courses){
-            if (cs.getCode() == c.getCode()){
-                courses.set(courses.indexOf(cs), c);
-                return true;
+    public Course updateCourse(String code, String title, int numCredits, int maxStudents){
+        Course cTest = getCourse(code);
+        if(cTest == null){
+            throw new IllegalArgumentException("O curso não foi encontrado.");
+        }
+        else{
+            Course c = new Course(code, title, numCredits, maxStudents);
+            for (Course cs : courses){
+                if (cs.getCode() == c.getCode()){
+                    courses.set(courses.indexOf(cs), c);
+                }
             }
         }
-        return false;
+        return cTest;
     }
     public UnderGraduateStudent addUndergraduateStudent(long ID, String name, String address, String phone, String email, String major, String minor){
         UnderGraduateStudent ugs = new UnderGraduateStudent(ID, name, address, phone, email, major, minor);
         students.add(ugs);
         return ugs;
     }
-    public boolean updateUndergraduateStudent(long ID, String name, String address, String phone, String email, String major, String minor){
-        UnderGraduateStudent ugs = new UnderGraduateStudent(ID, name, address, phone, email, major, minor);
-        for (Student s : students){
-            if (s instanceof UnderGraduateStudent){
-                if (s.getID() == ugs.getID()){
-                    students.set(students.indexOf(s), ugs);
-                    return true;
+    public UnderGraduateStudent updateUndergraduateStudent(long ID, String name, String address, String phone, String email, String major, String minor){
+        Student sTest = getStudent(ID);
+        if(sTest == null){
+            throw new IllegalArgumentException("O aluno não foi encontrado.");
+        }
+        else{
+            UnderGraduateStudent ugs = new UnderGraduateStudent(ID, name, address, phone, email, major, minor);
+            for (Student s : students){
+                if (s instanceof UnderGraduateStudent){
+                    if (s.getID() == ugs.getID()){
+                        students.set(students.indexOf(s), ugs);
+                    }
                 }
             }
         }
-        return false;
+        return ((UnderGraduateStudent)sTest);
     }
     
     public PostGraduateStudent addPostgraduateStudent(long ID, String name, String address, String phone, String email, String thesisTitle, String supervisor){
@@ -62,17 +72,22 @@ public class University {
         return pgs;
     }
     
-    public boolean updatePostgraduateStudent(long ID, String name, String address, String phone, String email, String thesisTitle, String supervisor){
-        PostGraduateStudent pgs = new PostGraduateStudent(ID, name, address, phone, email, thesisTitle, supervisor);
-        for (Student s : students){
-            if (s instanceof PostGraduateStudent){
-                if (s.getID() == pgs.getID()){
-                    students.set(students.indexOf(s), pgs);
-                    return true;
+    public PostGraduateStudent updatePostgraduateStudent(long ID, String name, String address, String phone, String email, String thesisTitle, String supervisor){
+        Student sTest = getStudent(ID);
+        if(sTest == null){
+            throw new IllegalArgumentException("O aluno não foi encontrado.");
+        }
+        else{
+            PostGraduateStudent pgs = new PostGraduateStudent(ID, name, address, phone, email, thesisTitle, supervisor);
+            for (Student s : students){
+                if (s instanceof PostGraduateStudent){
+                    if (s.getID() == pgs.getID()){
+                        students.set(students.indexOf(s), pgs);
+                    }
                 }
             }
         }
-        return false;
+        return ((PostGraduateStudent)sTest);
     }
     
     public Course getCourse(String code){
@@ -81,7 +96,7 @@ public class University {
                 return c;
             }
         }
-        return null;
+        throw new IllegalArgumentException("O curso não foi encontrado.");
     }
     public Student getStudent(long ID){
         for(Student s : students){
@@ -89,7 +104,7 @@ public class University {
                 return s;
             }
         }
-        return null;
+        throw new IllegalArgumentException("O aluno não foi encontrado.");
     }
     public ArrayList<Course> getCourses(long studentID){
         ArrayList<Course> c = new ArrayList();
@@ -115,12 +130,22 @@ public class University {
                 return r;
             }
         }
-        return null;
+        throw new IllegalArgumentException("A matrícula não foi encontrada.");
     }
     public boolean registerStudent(long studentID, String courseCode){
-        Registration r = new Registration(getStudent(studentID), getCourse(courseCode), 2015, 02);
-        registrations.add(r);
-        return true;
+        Course c = getCourse(courseCode);
+        Student s = getStudent(studentID);
+        if(c.getMaxStudents() == 0){
+            throw new IllegalArgumentException("O número máximo de estudantes foi atingido.");
+        }
+        if(s == null){
+            return false;
+        }
+        else{
+            Registration r = new Registration(getStudent(studentID), getCourse(courseCode), 2015, 02);
+            registrations.add(r);
+            return true;
+       }
     }
     public boolean deRegisterStudent(long studentID, String courseCode){
         registrations.remove(getRegistration(studentID, courseCode));
