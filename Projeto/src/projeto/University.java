@@ -28,30 +28,53 @@ public class University {
         courses.add(c);
         return c;
     }
-    public Course updateCourse(String code, String title, int numCredits, int maxStudents){
+    public boolean updateCourse(String code, String title, int numCredits, int maxStudents){
         Course c = new Course(code, title, numCredits, maxStudents);
-        return c;
+        for (Course cs : courses){
+            if (cs.getCode() == c.getCode()){
+                courses.set(courses.indexOf(cs), c);
+                return true;
+            }
+        }
+        return false;
     }
     public UnderGraduateStudent addUndergraduateStudent(long ID, String name, String address, String phone, String email, String major, String minor){
         UnderGraduateStudent ugs = new UnderGraduateStudent(ID, name, address, phone, email, major, minor);
         students.add(ugs);
         return ugs;
     }
-    public UnderGraduateStudent updateUndergraduateStudent(long ID, String name, String address, String phone, String email, String major, String minor){
+    public boolean updateUndergraduateStudent(long ID, String name, String address, String phone, String email, String major, String minor){
         UnderGraduateStudent ugs = new UnderGraduateStudent(ID, name, address, phone, email, major, minor);
-        return ugs;
-        //Isso ta errado, tem que atualizar com busca, e todo o caraio a quatro.
+        for (Student s : students){
+            if (s instanceof UnderGraduateStudent){
+                if (s.getID() == ugs.getID()){
+                    students.set(students.indexOf(s), ugs);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+    
     public PostGraduateStudent addPostgraduateStudent(long ID, String name, String address, String phone, String email, String thesisTitle, String supervisor){
         PostGraduateStudent pgs = new PostGraduateStudent(ID, name, address, phone, email, thesisTitle, supervisor);
         students.add(pgs);
         return pgs;
     }
-    public PostGraduateStudent updatePostgraduateStudent(long ID, String name, String address, String phone, String email, String thesisTitle, String supervisor){
+    
+    public boolean updatePostgraduateStudent(long ID, String name, String address, String phone, String email, String thesisTitle, String supervisor){
         PostGraduateStudent pgs = new PostGraduateStudent(ID, name, address, phone, email, thesisTitle, supervisor);
-        return pgs;
-        //Isso ta errado, tem que atualizar com busca, e todo o caraio a quatro.
+        for (Student s : students){
+            if (s instanceof PostGraduateStudent){
+                if (s.getID() == pgs.getID()){
+                    students.set(students.indexOf(s), pgs);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+    
     public Course getCourse(String code){
         for(Course c : courses){
             if (c.getCode() == code){
@@ -96,6 +119,7 @@ public class University {
     }
     public boolean registerStudent(long studentID, String courseCode){
         Registration r = new Registration(getStudent(studentID), getCourse(courseCode), 2015, 02);
+        registrations.add(r);
         return true;
     }
     public boolean deRegisterStudent(long studentID, String courseCode){

@@ -28,7 +28,7 @@ public class UnderGraduateStudent
     }
     @Override
     public String toString(){
-        return "ID: " + super.ID + " - Name: " + super.name + " - Address: " + " - Phone: " + super.phone + " - Email: " + super.email + " - Major: " + this.major + " - Minor: " + this.minor;
+        return "ID: " + super.ID + " - Name: " + super.name + " - Address: " + super.address + " - Phone: " + super.phone + " - Email: " + super.email + " - Major: " + this.major + " - Minor: " + this.minor;
     }
     
 }

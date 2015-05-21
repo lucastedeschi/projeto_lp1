@@ -28,6 +28,6 @@ public class PostGraduateStudent
     }
     @Override
     public String toString(){
-        return "ID: " + super.ID + " - Name: " + super.name + " - Address: " + " - Phone: " + super.phone + " - Email: " + super.email + " - Thesis Title: " + this.thesisTitle + " - Supervisor: " + this.supervisor;
+        return "ID: " + super.ID + " - Name: " + super.name + " - Address: " + super.address + " - Phone: " + super.phone + " - Email: " + super.email + " - Thesis Title: " + this.thesisTitle + " - Supervisor: " + this.supervisor;
     }
 }

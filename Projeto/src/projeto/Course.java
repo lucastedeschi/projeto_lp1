@@ -41,7 +41,7 @@ public class Course {
         return true;
     }
     public String toString(){
-        return "Code" + this.code + " - Title: " + this.title + " - NumCredits: " + this.numCredits + " - MaxStudents: " + this.maxStudents;
+        return "Code " + this.code + " - Title: " + this.title + " - NumCredits: " + this.numCredits + " - MaxStudents: " + this.maxStudents;
     }
     public String getCode(){
         return this.code;
